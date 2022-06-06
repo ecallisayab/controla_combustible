@@ -25,6 +25,12 @@ if(userSesion == null) {
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        thead {
+            background-color: #5c7ad6;
+            color: white;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -77,7 +83,7 @@ if(userSesion == null) {
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <table class="table table-stripped table-hover">
+                                    <table class="table table-stripped table-hover table-sm">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>

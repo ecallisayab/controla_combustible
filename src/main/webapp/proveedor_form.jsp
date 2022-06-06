@@ -15,7 +15,7 @@ if(userSesion == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de combustible | Usuarios</title>
+    <title>Control de Combustible | Proveedores</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@ if(userSesion == null) {
 
         <!-- Sidebar -->
         <jsp:include page="META-INF/componentes/menu.jsp">
-            <jsp:param name="opcion" value="usuarios"/>
+            <jsp:param name="opcion" value="proveedores"/>
         </jsp:include>
         <!-- End of Sidebar -->
 
@@ -70,56 +70,80 @@ if(userSesion == null) {
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h5 class="m-0 font-weight-bold">Usuarios</h5>
-                                    <a class="btn btn-default text-right" href="UsuarioControlador">
+                                    <h5 class="m-0 font-weight-bold">Proveedores</h5>
+                                    <a class="btn btn-default text-right" href="ProveedorControlador">
                                         <span class="fa fa-arrow-left"></span>&nbsp;Volver
                                     </a>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <form action="UsuarioControlador" method="POST" autocomplete="off">
-                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${usuario.id}">
+                                    <form action="ProveedorControlador" method="POST" autocomplete="off">
+                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${proveedor.id}">
                                         <div class="row">
-                                            <div class="col-lg-8">
+                                            <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label id="txtNombresApellidos">Nombres y Apellidos</label>
-                                                    <input class="form-control" type="text" name="nombres_apellidos" id="txtNombresApellidos" value="${usuario.nombres_apellidos}" required>
+                                                    <label id="txtNombre">Nombre</label>
+                                                    <input class="form-control" type="text" name="nombre" id="txtNombre" value="${proveedor.nombre}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-group">
+                                                    <label id="txtFono1">Teléfono (línea 1)</label>
+                                                    <input class="form-control" type="number" name="fono_1" id="txtFono1" value="${proveedor.fono1}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-group">
+                                                    <label id="txtFono2">Teléfono (línea 2)</label>
+                                                    <input class="form-control" type="number" name="fono_2" id="txtFono2" value="${proveedor.fono2}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label id="txtDireccion">Dirección</label>
+                                                    <input class="form-control" type="text" name="direccion" id="txtDireccion" value="${proveedor.direccion}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-group">
+                                                    <label id="txtCorreo">Correo</label>
+                                                    <input class="form-control" type="email" name="correo" id="txtCorreo" value="${proveedor.correo}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-group">
+                                                    <label id="txtNit">NIT</label>
+                                                    <input class="form-control" type="text" name="nit" id="txtNit" value="${proveedor.nit}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtUsuario">Usuario</label>
-                                                    <input class="form-control" type="text" name="usuario" id="txtUsuario" value="${usuario.usuario}" required>
+                                                    <label id="txtRepLegal">Representante legal</label>
+                                                    <input class="form-control" type="text" name="rep_legal" id="txtRepLegal" value="${proveedor.rep_legal}">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-3">
                                                 <div class="form-group">
-                                                    <label id="txtContrasena">Contraseña</label>
-                                                    <input class="form-control" type="password" name="contrasena" id="txtContrasena" value="${usuario.contrasena}" <c:if test="${usuario.id == 0}">required</c:if>>
+                                                    <label id="txtRepFono">Teléfono representante</label>
+                                                    <input class="form-control" type="number" name="rep_fono" id="txtRepFono" value="${proveedor.rep_fono}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="form-group">
+                                                    <label id="txtRepDireccion">Dirección representante</label>
+                                                    <input class="form-control" type="text" name="rep_direccion" id="txtRepDireccion" value="${proveedor.rep_direccion}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label id="cboRol">Rol</label>
-                                                    <select class="form-control" name="rol" id="cboRol" required>
-                                                        <option value="">--Selecciones una opción--</option>
-                                                        <option value="ADMIN" <c:if test="${usuario.rol == 'ADMIN'}">selected</c:if>>ADMIN</option>
-                                                        <option value="TECNICO" <c:if test="${usuario.rol == 'TECNICO'}">selected</c:if>>TÉCNICO</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label id="cboEstado">Estado</label>
-                                                    <select class="form-control" name="estado" id="cboEstado" required>
-                                                        <option value="">--Selecciones una opción--</option>
-                                                        <option value="1" <c:if test="${usuario.estado == 1}">selected</c:if>>ACTIVADO</option>
-                                                        <option value="0" <c:if test="${usuario.estado == 0}">selected</c:if>>DESACTIVADO</option>
-                                                    </select>
+                                                    <label id="txtObs">Observación</label>
+                                                    <textarea class="form-control" name="obs" id="txtObs" rows="3">${proveedor.obs}</textarea>
                                                 </div>
                                             </div>
                                         </div>
