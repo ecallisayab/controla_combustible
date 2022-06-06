@@ -63,7 +63,7 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h4 class="m-0 font-weight-bold">Listado de cargos</h4>
+                                    <h5 class="m-0 font-weight-bold">Listado de cargos</h5>
                                     <a class="btn btn-primary text-right" href="CargoControlador?accion=nuevo">
                                         <span class="fa fa-plus"></span>&nbsp;Nuevo
                                     </a>

@@ -2,7 +2,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -26,7 +26,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuSubmodulos"
                     aria-expanded="true" aria-controls="menuSubmodulos">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Submódulos</span>
                 </a>
                 <div id="menuSubmodulos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -61,13 +61,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuUsuarios"
                     aria-expanded="true" aria-controls="menuUsuarios">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>Usuarios</span>
                 </a>
                 <div id="menuUsuarios" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Usuarios</a>
+                        <a class="collapse-item" href="UsuarioControlador">Usuarios</a>
                     </div>
                 </div>
             </li>

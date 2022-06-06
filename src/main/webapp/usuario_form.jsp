@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de combustible | Cargos</title>
+    <title>Control de combustible | Usuarios</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
 
         <!-- Sidebar -->
         <jsp:include page="META-INF/componentes/menu.jsp">
-            <jsp:param name="opcion" value="catalogo_cargos"/>
+            <jsp:param name="opcion" value="usuarios"/>
         </jsp:include>
         <!-- End of Sidebar -->
 
@@ -63,20 +63,46 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h5 class="m-0 font-weight-bold">Cargos</h5>
-                                    <a class="btn btn-default text-right" href="CargoControlador">
+                                    <h5 class="m-0 font-weight-bold">Usuarios</h5>
+                                    <a class="btn btn-default text-right" href="UsuarioControlador">
                                         <span class="fa fa-arrow-left"></span>&nbsp;Volver
                                     </a>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <form action="CargoControlador" method="POST" autocomplete="off">
-                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${cargo.id}">
+                                    <form action="UsuarioControlador" method="POST" autocomplete="off">
+                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${usuario.id}">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class="form-group">
+                                                    <label id="txtNombresApellidos">Nombres y Apellidos</label>
+                                                    <input class="form-control" type="text" name="nombres_apellidos" id="txtNombresApellidos" value="${usuario.nombres_apellidos}" required>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtNombre">Nombre</label>
-                                                    <input class="form-control" type="text" name="nombre" id="txtNombre" value="${cargo.nombre}" required>
+                                                    <label id="txtUsuario">Usuario</label>
+                                                    <input class="form-control" type="text" name="usuario" id="txtUsuario" value="${usuario.usuario}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="txtContrasena">Contraseña</label>
+                                                    <input class="form-control" type="password" name="contrasena" id="txtContrasena" value="${usuario.contrasena}" <c:if test="${usuario.id == 0}">required</c:if>>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="cboRol">Rol</label>
+                                                    <select class="form-control" name="rol" id="cboRol" required>
+                                                        <option value="">--Selecciones una opción--</option>
+                                                        <option value="ADMIN" <c:if test="${usuario.rol == 'ADMIN'}">selected</c:if>>ADMIN</option>
+                                                        <option value="TECNICO" <c:if test="${usuario.rol == 'TECNICO'}">selected</c:if>>TÉCNICO</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
@@ -84,8 +110,8 @@
                                                     <label id="cboEstado">Estado</label>
                                                     <select class="form-control" name="estado" id="cboEstado" required>
                                                         <option value="">--Selecciones una opción--</option>
-                                                        <option value="1" <c:if test="${cargo.estado == 1}">selected</c:if>>ACTIVADO</option>
-                                                        <option value="0" <c:if test="${cargo.estado == 0}">selected</c:if>>DESACTIVADO</option>
+                                                        <option value="1" <c:if test="${usuario.estado == 1}">selected</c:if>>ACTIVADO</option>
+                                                        <option value="0" <c:if test="${usuario.estado == 0}">selected</c:if>>DESACTIVADO</option>
                                                     </select>
                                                 </div>
                                             </div>
