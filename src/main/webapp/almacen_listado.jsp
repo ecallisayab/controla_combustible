@@ -15,7 +15,7 @@ if(userSesion == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de Combustible | Inicio</title>
+    <title>Control de Combustible | Almacenes</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@ if(userSesion == null) {
 
         <!-- Sidebar -->
         <jsp:include page="META-INF/componentes/menu.jsp">
-            <jsp:param name="opcion" value="catalogo_cargos"/>
+            <jsp:param name="opcion" value="almacenes"/>
         </jsp:include>
         <!-- End of Sidebar -->
 
@@ -65,8 +65,54 @@ if(userSesion == null) {
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col-lg-12">
+
                             <!-- BEGIN::CONTENIDO -->
-                            
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h5 class="m-0 font-weight-bold">Listado de almacenes</h5>
+                                    <a class="btn btn-primary text-right" href="AlmacenControlador?accion=nuevo">
+                                        <span class="fa fa-plus"></span>&nbsp;Nuevo
+                                    </a>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <table class="table table-stripped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Dirección</th>
+                                                <th>Estado</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach var="item" items="${almacenes}">
+                                            <tr>
+                                                <td>${item.id}</td>
+                                                <td>${item.nombre}</td>
+                                                <td>${item.direccion}</td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${item.estado == 1}">
+                                                        ACTIVADO
+                                                        </c:when>
+                                                        <c:when test="${item.estado == 0}">
+                                                        DESACTIVADO
+                                                        </c:when>
+                                                    </c:choose>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-success btn-sm" href="AlmacenControlador?accion=editar&id=${item.id}"><span class="fa fa-edit"></span>&nbsp;Editar</a>
+                                                    <a class="btn btn-danger btn-sm" href="AlmacenControlador?accion=eliminar&id=${item.id}"><span class="fa fa-trash"></span>&nbsp;Eliminar</a>
+                                                </td>
+                                            </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                             <!-- END::CONTENIDO -->
                         </div>
                     </div>

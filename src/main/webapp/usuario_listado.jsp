@@ -1,3 +1,10 @@
+<%@page import="com.emergentes.utilidades.SesionUsuario"%>
+<%
+SesionUsuario userSesion = (SesionUsuario) session.getAttribute("controla_combustible");
+if(userSesion == null) {
+    response.sendRedirect("LoginControlador");
+}
+%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
@@ -8,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de combustible | Usuarios</title>
+    <title>Control de Combustible | Usuarios</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -70,7 +77,7 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <table class="table table-stripped">
+                                    <table class="table table-stripped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -88,7 +95,16 @@
                                                 <td>${item.nombres_apellidos}</td>
                                                 <td>${item.usuario}</td>
                                                 <td>${item.rol}</td>
-                                                <td>${item.estado}</td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${item.estado == 1}">
+                                                        ACTIVADO
+                                                        </c:when>
+                                                        <c:when test="${item.estado == 0}">
+                                                        DESACTIVADO
+                                                        </c:when>
+                                                    </c:choose>
+                                                </td>
                                                 <td>
                                                     <a class="btn btn-success btn-sm" href="UsuarioControlador?accion=editar&id=${item.id}"><span class="fa fa-edit"></span>&nbsp;Editar</a>
                                                     <a class="btn btn-danger btn-sm" href="UsuarioControlador?accion=eliminar&id=${item.id}"><span class="fa fa-trash"></span>&nbsp;Eliminar</a>

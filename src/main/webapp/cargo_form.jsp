@@ -1,3 +1,10 @@
+<%@page import="com.emergentes.utilidades.SesionUsuario"%>
+<%
+SesionUsuario userSesion = (SesionUsuario) session.getAttribute("controla_combustible");
+if(userSesion == null) {
+    response.sendRedirect("LoginControlador");
+}
+%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>

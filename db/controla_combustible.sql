@@ -245,4 +245,27 @@ CREATE TABLE `vehiculos`  (
   CONSTRAINT `veh_tipoid_fk` FOREIGN KEY (`tipo_id`) REFERENCES `catalogo_tipos_vehiculo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
+-- ----------------------------
+-- Table structure for usuarios
+-- ----------------------------
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios`  (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'PK, Identificador correlativo',
+  `nombres_apellidos` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Nombres y Apellidos',
+  `usuario` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Usuario',
+  `contrasena` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Contraseña',
+  `rol` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Rol de usuario',
+  `estado` tinyint(4) NULL DEFAULT NULL COMMENT 'Estado de ítem',
+  `creado_por` smallint(6) NULL DEFAULT NULL COMMENT 'Creado por usuario',
+  `actualizado_por` smallint(6) NULL DEFAULT NULL COMMENT 'Actualizado por usuario',
+  `fecha_creacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de creación',
+  `fecha_actualizacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de actualización',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of usuarios
+-- ----------------------------
+INSERT INTO `usuarios` VALUES (1, 'ADMINISTRADOR', 'ADMIN', '3f7caa3d471688b704b73e9a77b1107f', 'ADMIN', 1, 1, 1, '2022-06-05 23:48:02', '2022-06-05 23:48:02');
+
 SET FOREIGN_KEY_CHECKS = 1;
