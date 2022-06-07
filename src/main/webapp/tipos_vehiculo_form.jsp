@@ -1,3 +1,10 @@
+<%@page import="com.emergentes.utilidades.SesionUsuario"%>
+<%
+SesionUsuario userSesion = (SesionUsuario) session.getAttribute("controla_combustible");
+if(userSesion == null) {
+    response.sendRedirect("LoginControlador");
+}
+%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
@@ -8,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de combustible | TipoVehiculo</title>
+    <title>Control de Combustible | Tipos de Vehículo</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -64,7 +71,7 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h4 class="m-0 font-weight-bold">Tipo de Vehiculo</h4>
+                                    <h5 class="m-0 font-weight-bold">Tipos de vehículo</h5>
                                     <a class="btn btn-default text-right" href="TipoVehiculoControlador">
                                         <span class="fa fa-arrow-left"></span>&nbsp;Volver
                                     </a>

@@ -60,10 +60,7 @@ public class TipoVehiculoControlador extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
         SesionUsuario objSesion = new SesionUsuario();
-        //objSesion = (SesionUsuario) sesion.getAttribute("controla_combustible");
-        objSesion.setUsuario_id(1);
-        objSesion.setUsuario_nombre("admin");
-        objSesion.setUsuario_rol("admin");
+        objSesion = (SesionUsuario) sesion.getAttribute("controla_combustible");
         
         int id = Integer.parseInt(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
