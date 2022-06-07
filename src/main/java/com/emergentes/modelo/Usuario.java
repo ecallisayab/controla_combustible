@@ -1,7 +1,7 @@
 package com.emergentes.modelo;
 
 public class Usuario {
-    private int id;
+  private int id;
     private String nombres_apellidos;
     private String usuario;
     private String contrasena;
@@ -13,8 +13,10 @@ public class Usuario {
         nombres_apellidos = "";
         usuario = "";
         contrasena = "";
-        rol = "";
+        rol= "";
         estado = 0;
+        
+        
     }
 
     public int getId() {
