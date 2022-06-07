@@ -15,7 +15,7 @@ if(userSesion == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de Combustible | Cargos</title>
+    <title>Control de Combustible | Ítems</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,6 +25,12 @@ if(userSesion == null) {
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        thead {
+            background-color: #5c7ad6;
+            color: white;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -34,7 +40,7 @@ if(userSesion == null) {
 
         <!-- Sidebar -->
         <jsp:include page="META-INF/componentes/menu.jsp">
-            <jsp:param name="opcion" value="catalogo_cargos"/>
+            <jsp:param name="opcion" value="items"/>
         </jsp:include>
         <!-- End of Sidebar -->
 
@@ -70,42 +76,51 @@ if(userSesion == null) {
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h5 class="m-0 font-weight-bold">Cargos</h5>
-                                    <a class="btn btn-default text-right" href="CargoControlador">
-                                        <span class="fa fa-arrow-left"></span>&nbsp;Volver
+                                    <h5 class="m-0 font-weight-bold">Listado de ítems</h5>
+                                    <a class="btn btn-primary text-right" href="ItemControlador?accion=nuevo">
+                                        <span class="fa fa-plus"></span>&nbsp;Nuevo
                                     </a>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <form action="CargoControlador" method="POST" autocomplete="off">
-                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${cargo.id}">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label id="txtNombre">Nombre</label>
-                                                    <input class="form-control" type="text" name="nombre" id="txtNombre" value="${cargo.nombre}" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label id="cboEstado">Estado</label>
-                                                    <select class="form-control" name="estado" id="cboEstado" required>
-                                                        <option value="">--Selecciones una opción--</option>
-                                                        <option value="1" <c:if test="${cargo.estado == 1}">selected</c:if>>ACTIVADO</option>
-                                                        <option value="0" <c:if test="${cargo.estado == 0}">selected</c:if>>DESACTIVADO</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <button class="btn btn-primary" type="submit" id="btnGuardar">Guardar</button>
-                                                    <button class="btn btn-secondary" type="reset" id="btnCancelar">Cancelar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <table class="table table-stripped table-hover table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Unidad de medida</th>
+                                                <th>Stock mínimo</th>
+                                                <th>Stock actual</th>
+                                                <th>Estado</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach var="item" items="${items}">
+                                            <tr>
+                                                <td>${item.id}</td>
+                                                <td>${item.nombre}</td>
+                                                <td>${item.unidad_medida}</td>
+                                                <td>${item.stock_min}</td>
+                                                <td>${item.stock_actual}</td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${item.estado == 1}">
+                                                        ACTIVADO
+                                                        </c:when>
+                                                        <c:when test="${item.estado == 0}">
+                                                        DESACTIVADO
+                                                        </c:when>
+                                                    </c:choose>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-success btn-sm" href="ItemControlador?accion=editar&id=${item.id}" title="Editar"><span class="fa fa-edit"></span></a>
+                                                    <a class="btn btn-danger btn-sm" href="ItemControlador?accion=eliminar&id=${item.id}" title="Eliminar"><span class="fa fa-trash"></span></a>
+                                                </td>
+                                            </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <!-- END::CONTENIDO -->

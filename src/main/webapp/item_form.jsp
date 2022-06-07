@@ -15,7 +15,7 @@ if(userSesion == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de Combustible | Cargos</title>
+    <title>Control de Combustible | Ítems</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@ if(userSesion == null) {
 
         <!-- Sidebar -->
         <jsp:include page="META-INF/componentes/menu.jsp">
-            <jsp:param name="opcion" value="catalogo_cargos"/>
+            <jsp:param name="opcion" value="almacenes"/>
         </jsp:include>
         <!-- End of Sidebar -->
 
@@ -70,20 +70,40 @@ if(userSesion == null) {
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h5 class="m-0 font-weight-bold">Cargos</h5>
-                                    <a class="btn btn-default text-right" href="CargoControlador">
+                                    <h5 class="m-0 font-weight-bold">Ítems</h5>
+                                    <a class="btn btn-default text-right" href="ItemControlador">
                                         <span class="fa fa-arrow-left"></span>&nbsp;Volver
                                     </a>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <form action="CargoControlador" method="POST" autocomplete="off">
-                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${cargo.id}">
+                                    <form action="ItemControlador" method="POST" autocomplete="off">
+                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${item.id}">
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label id="txtNombre">Nombre</label>
-                                                    <input class="form-control" type="text" name="nombre" id="txtNombre" value="${cargo.nombre}" required>
+                                                    <input class="form-control" type="text" name="nombre" id="txtNombre" value="${item.nombre}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="txtUnidadMedida">Unidad de medida</label>
+                                                    <input class="form-control" type="text" name="unidad_medida" id="txtUnidadMedida" value="${item.unidad_medida}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="txtStockMinimo">Stock mínimo</label>
+                                                    <input class="form-control" type="text" name="stock_min" id="txtStockMinimo" value="${item.stock_min}" min="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="txtStockActual">Stock actual</label>
+                                                    <input class="form-control" type="text" name="stock_actual" id="txtStockActual" value="${item.stock_actual}" min="0" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
@@ -91,8 +111,8 @@ if(userSesion == null) {
                                                     <label id="cboEstado">Estado</label>
                                                     <select class="form-control" name="estado" id="cboEstado" required>
                                                         <option value="">--Selecciones una opción--</option>
-                                                        <option value="1" <c:if test="${cargo.estado == 1}">selected</c:if>>ACTIVADO</option>
-                                                        <option value="0" <c:if test="${cargo.estado == 0}">selected</c:if>>DESACTIVADO</option>
+                                                        <option value="1" <c:if test="${item.estado == 1}">selected</c:if>>ACTIVADO</option>
+                                                        <option value="0" <c:if test="${item.estado == 0}">selected</c:if>>DESACTIVADO</option>
                                                     </select>
                                                 </div>
                                             </div>

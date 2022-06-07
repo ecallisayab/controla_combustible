@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de combustible | Login</title>
+    <title>Control de Combustible | Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -53,7 +53,7 @@
 <body>
     <form class="form-signin" action="LoginControlador" method="POST" autocomplete="off">
         <div class="text-center mb-4">
-            <img class="mb-4" src="img/combustible.svg" alt="" width="" height="100">
+            <img class="mb-4" src="img/tractor.svg" alt="" width="" height="130">
             <h1 class="h3 mb-3 font-weight-normal">Controla Combustible</h1>
         </div>
 

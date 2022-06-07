@@ -112,8 +112,8 @@ if(userSesion == null) {
                                                     </c:choose>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-success btn-sm" href="UsuarioControlador?accion=editar&id=${item.id}"><span class="fa fa-edit"></span>&nbsp;Editar</a>
-                                                    <a class="btn btn-danger btn-sm" href="UsuarioControlador?accion=eliminar&id=${item.id}"><span class="fa fa-trash"></span>&nbsp;Eliminar</a>
+                                                    <a class="btn btn-success btn-sm" href="UsuarioControlador?accion=editar&id=${item.id}" title="Editar"><span class="fa fa-edit"></span></a>
+                                                    <a class="btn btn-danger btn-sm" href="UsuarioControlador?accion=eliminar&id=${item.id}" title="Eliminar"><span class="fa fa-trash"></span></a>
                                                 </td>
                                             </tr>
                                             </c:forEach>

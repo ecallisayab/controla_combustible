@@ -3,7 +3,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <div class="sidebar-brand-icon">
                     <i class="fas fa-truck"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">CONTROLA COMBUSTIBLE</div>

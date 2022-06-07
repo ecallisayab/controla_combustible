@@ -15,7 +15,7 @@ if(userSesion == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de combustible | Cargos</title>
+    <title>Control de Combustible | Cargos</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -108,8 +108,8 @@ if(userSesion == null) {
                                                     </c:choose>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-success btn-sm" href="CargoControlador?accion=editar&id=${item.id}"><span class="fa fa-edit"></span>&nbsp;Editar</a>
-                                                    <a class="btn btn-danger btn-sm" href="CargoControlador?accion=eliminar&id=${item.id}"><span class="fa fa-trash"></span>&nbsp;Eliminar</a>
+                                                    <a class="btn btn-success btn-sm" href="CargoControlador?accion=editar&id=${item.id}" title="Editar"><span class="fa fa-edit"></span></a>
+                                                    <a class="btn btn-danger btn-sm" href="CargoControlador?accion=eliminar&id=${item.id}" title="Eliminar"><span class="fa fa-trash"></span></a>
                                                 </td>
                                             </tr>
                                             </c:forEach>

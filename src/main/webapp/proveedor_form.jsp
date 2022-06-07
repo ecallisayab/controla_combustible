@@ -108,7 +108,7 @@ if(userSesion == null) {
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="form-group">
-                                                    <label id="txtCorreo">Correo</label>
+                                                    <label id="txtCorreo">Correo electrónico</label>
                                                     <input class="form-control" type="email" name="correo" id="txtCorreo" value="${proveedor.correo}">
                                                 </div>
                                             </div>
