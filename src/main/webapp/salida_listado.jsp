@@ -115,6 +115,7 @@ if(userSesion == null) {
                                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                                             <a class="dropdown-item" href="SalidaDetalleControlador?accion=nuevo&salida_id=${item.id}" title="Agregar detalle"><span class="fa fa-plus"></span>&nbsp;Agregar detalle</a>
                                                             <a class="dropdown-item" href="SalidaDetalleControlador?accion=default&salida_id=${item.id}" title="Ver detalle"><span class="fa fa-eye"></span>&nbsp;Ver detalle</a>
+                                                            <a class="dropdown-item" href="SalidaControlador?accion=reporte&id=${item.id}" title="Ver reporte"><span class="fa fa-file"></span>&nbsp;Ver reporte</a>
                                                             <a class="dropdown-item" href="SalidaControlador?accion=editar&id=${item.id}" title="Editar"><span class="fa fa-edit"></span>&nbsp;Editar</a>
                                                             <a class="dropdown-item" href="SalidaControlador?accion=eliminar&id=${item.id}" title="Eliminar"><span class="fa fa-trash"></span>&nbsp;Eliminar</a>
                                                         </div>

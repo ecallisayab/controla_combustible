@@ -66,7 +66,16 @@ if(userSesion == null) {
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- BEGIN::CONTENIDO -->
-                            
+                            <h1 class="fw-light">TECNOLOGÍAS EMERGENTES II</h1>
+                            <h3 class="fw-light">CONTROLA COMBUSTIBLE v1.0</h3>
+                            <p class="lead text-muted">El sistema tiene como finalidad, controlar las entradas y salidas de combustible. Asimismo, monitorear la duración y el uso apropiado de este recurso.</p>
+                            <h5>DESARROLLADORES</h5>
+                            <p>
+                                <ul>
+                                    <li>Callisaya Bautista Edwin (4332657LP)</li>
+                                    <li>Mamani Yanarico Miguel (69924414LP)</li>
+                                </ul>
+                            </p>
                             <!-- END::CONTENIDO -->
                         </div>
                     </div>

@@ -64,7 +64,7 @@ public class EntradaDaoImplementacion extends ConexionBaseDatos implements Entra
     @Override
     public Entrada getById(int id) throws Exception {
         Entrada entrada = new Entrada();
-        String sql = "SELECT * FROM entradas WHERE id=?";
+        String sql = "SELECT t1.*, t2.nombre AS almacen, CONCAT(t3.nombres,' ',t3.paterno, ' ',t3.materno) AS responsable, t4.nombre AS proveedor FROM entradas t1 INNER JOIN almacenes t2 ON t1.almacen_id=t2.id INNER JOIN empleados t3 ON t1.responsable_id=t3.id INNER JOIN proveedores t4 ON t1.proveedor_id=t4.id WHERE t1.id=?";
         this.conectar();
         PreparedStatement ps = this.conn.prepareStatement(sql);
         ps.setInt(1, id);
@@ -74,8 +74,11 @@ public class EntradaDaoImplementacion extends ConexionBaseDatos implements Entra
             entrada.setFecha(rs.getString("fecha"));
             entrada.setHora(rs.getString("hora"));
             entrada.setAlmacen_id(rs.getInt("almacen_id"));
+            entrada.setAlmacen(rs.getString("almacen"));
             entrada.setResponsable_id(rs.getInt("responsable_id"));
+            entrada.setResponsable(rs.getString("responsable"));
             entrada.setProveedor_id(rs.getInt("proveedor_id"));
+            entrada.setProveedor(rs.getString("proveedor"));
             entrada.setObs(rs.getString("obs"));
         }
         this.desconectar();

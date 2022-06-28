@@ -71,55 +71,77 @@ if(userSesion == null) {
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col-lg-12">
-
                             <!-- BEGIN::CONTENIDO -->
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h5 class="m-0 font-weight-bold">Listado de entradas</h5>
-                                    <a class="btn btn-primary text-right" href="EntradaControlador?accion=nuevo">
-                                        <span class="fa fa-plus"></span>&nbsp;Nuevo
+                                    <h5 class="m-0 font-weight-bold">Reporte de entrada</h5>
+                                    <a class="btn btn-default text-right" href="EntradaControlador">
+                                        <span class="fa fa-left-arrow"></span>&nbsp;Volver
                                     </a>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                                <span class="text-primary">ENTRADA N° ${entrada.id}</span>
+                                            </h4>
+                                            <ul class="list-group mb-3">
+                                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                                    <div>
+                                                        <h class="my-0">Fecha y Hora</h>
+                                                    </div>
+                                                    <span class="text-muted">${entrada.fecha}&nbsp;${entrada.hora}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                                    <div>
+                                                        <h class="my-0">Almacén</h>
+                                                    </div>
+                                                    <span class="text-muted">${entrada.almacen}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                                    <div>
+                                                        <h class="my-0">Responsable</h>
+                                                    </div>
+                                                    <span class="text-muted">${entrada.responsable}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                                    <div class="text-muted">
+                                                        <h class="my-0">Proveedor</h>
+                                                    </div>
+                                                    <span class="text-muted">${entrada.proveedor}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                                    <div class="text-muted">
+                                                        <h class="my-0">Observación</h>
+                                                    </div>
+                                                    <span class="text-muted">${entrada.obs}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="text-primary">DETALLE</span>
+                                    </h4>
                                     <table class="table table-stripped table-sm">
                                         <thead>
                                             <tr>
-                                                <th>N° de Entrada</th>
-                                                <th>Fecha y Hora</th>
-                                                <th>Almacén</th>
-                                                <th>Responsable</th>
-                                                <th>Proveedor</th>
-                                                <th>Observación</th>
-                                                <th></th>
+                                                <th>N°</th>
+                                                <th>Ítem</th>
+                                                <th>Cantidad (litros)</th>
+                                                <th>Precio Unitario (Bs.)</th>
+                                                <th>N° de factura</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach var="item" items="${entradas}">
+                                            <c:forEach var="item" items="${entrada_detalle}">
                                             <tr>
                                                 <td class="text-center">${item.id}</td>
-                                                <td>${item.fecha} ${item.hora}</td>
-                                                <td>${item.almacen}</td>
-                                                <td>${item.responsable}</td>
-                                                <td>${item.proveedor}</td>
-                                                <td>${item.obs}</td>
-                                                <td>
-                                                    <div class="btn-group " role="group" aria-label="Button group with nested dropdown">
-                                                      <div class="btn-group btn-group-sm" role="group">
-                                                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                          Acciones
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                            <a class="dropdown-item" href="EntradaDetalleControlador?accion=nuevo&entrada_id=${item.id}" title="Agregar detalle"><span class="fa fa-plus"></span>&nbsp;Agregar detalle</a>
-                                                            <a class="dropdown-item" href="EntradaDetalleControlador?accion=default&entrada_id=${item.id}" title="Ver detalle"><span class="fa fa-eye"></span>&nbsp;Ver detalle</a>
-                                                            <a class="dropdown-item" href="EntradaControlador?accion=reporte&id=${item.id}" title="Ver reporte"><span class="fa fa-file"></span>&nbsp;Ver reporte</a>
-                                                            <a class="dropdown-item" href="EntradaControlador?accion=editar&id=${item.id}" title="Editar"><span class="fa fa-edit"></span>&nbsp;Editar</a>
-                                                            <a class="dropdown-item" href="EntradaControlador?accion=eliminar&id=${item.id}" title="Eliminar"><span class="fa fa-trash"></span>&nbsp;Eliminar</a>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                </td>
+                                                <td>${item.item}</td>
+                                                <td>${item.cantidad}</td>
+                                                <td>${item.precio_unit}</td>
+                                                <td>${item.nro_factura}</td>
                                             </tr>
                                             </c:forEach>
                                         </tbody>

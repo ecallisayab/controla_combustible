@@ -3,6 +3,9 @@ package com.emergentes.controlador;
 import com.emergentes.dao.SalidaDao;
 import com.emergentes.dao.SalidaDaoImplementacion;
 import com.emergentes.modelo.Salida;
+import com.emergentes.dao.SalidaDetalleDao;
+import com.emergentes.dao.SalidaDetalleDaoImplementacion;
+import com.emergentes.modelo.SalidaDetalle;
 import com.emergentes.utilidades.SesionUsuario;
 import com.emergentes.dao.AlmacenDaoImplementacion;
 import com.emergentes.dao.AlmacenDao;
@@ -65,7 +68,16 @@ public class SalidaControlador extends HttpServlet {
                     List<Salida> lista = dao.getAll();
                     request.setAttribute("salidas", lista);
                     request.getRequestDispatcher("salida_listado.jsp").forward(request, response);
-                    break;                
+                    break;
+                case "reporte":
+                    SalidaDetalleDao daoDetalle = new SalidaDetalleDaoImplementacion();
+                    int salida_id = Integer.parseInt(request.getParameter("id"));
+                    salida = dao.getById(salida_id);
+                    List<SalidaDetalle> detalle = daoDetalle.getAll(salida_id);
+                    request.setAttribute("salida", salida);
+                    request.setAttribute("salida_detalle", detalle);
+                    request.getRequestDispatcher("salida_reporte.jsp").forward(request, response);
+                    break;
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

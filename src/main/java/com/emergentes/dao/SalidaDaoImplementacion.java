@@ -66,7 +66,7 @@ public class SalidaDaoImplementacion extends ConexionBaseDatos implements Salida
     @Override
     public Salida getById(int id) throws Exception {
         Salida salida = new Salida();
-        String sql = "SELECT * FROM salidas WHERE id=?";
+        String sql = "SELECT t1.*, t2.nombre AS almacen, CONCAT(t3.nombres,' ',t3.paterno, ' ',t3.materno) AS responsable, CONCAT(t4.marca,' ',t4.modelo, ' ',t4.placa) AS vehiculo, CONCAT(t5.nombres,' ',t5.paterno, ' ',t5.materno) AS empleado FROM salidas t1 INNER JOIN almacenes t2 ON t1.almacen_id=t2.id INNER JOIN empleados t3 ON t1.responsable_id=t3.id INNER JOIN vehiculos t4 ON t1.vehiculo_id=t4.id INNER JOIN empleados t5 ON t1.empleado_id=t5.id WHERE t1.id=?";
         this.conectar();
         PreparedStatement ps = this.conn.prepareStatement(sql);
         ps.setInt(1, id);
@@ -76,9 +76,13 @@ public class SalidaDaoImplementacion extends ConexionBaseDatos implements Salida
             salida.setFecha(rs.getString("fecha"));
             salida.setHora(rs.getString("hora"));
             salida.setAlmacen_id(rs.getInt("almacen_id"));
+            salida.setAlmacen(rs.getString("almacen"));
             salida.setEmpleado_id(rs.getInt("empleado_id"));
+            salida.setEmpleado(rs.getString("empleado"));
             salida.setResponsable_id(rs.getInt("responsable_id"));
+            salida.setResponsable(rs.getString("responsable"));
             salida.setVehiculo_id(rs.getInt("vehiculo_id"));
+            salida.setVehiculo(rs.getString("vehiculo"));
             salida.setObs(rs.getString("obs"));
         }
         this.desconectar();

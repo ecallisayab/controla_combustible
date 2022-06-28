@@ -23,6 +23,22 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Pages Collapse Menu -->
+            <!--
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuReportes"
+                    aria-expanded="true" aria-controls="menuReportes">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Reportes</span>
+                </a>
+                <div id="menuReportes" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="ReporteControlador">Consumo de combustible</a>
+                    </div>
+                </div>
+            </li>
+            -->
+
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuSubmodulos"
                     aria-expanded="true" aria-controls="menuSubmodulos">
