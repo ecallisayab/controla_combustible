@@ -15,7 +15,7 @@ if(userSesion == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de Combustible | Vehículos</title>
+    <title>Control de Combustible | Empleados</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -90,15 +90,15 @@ if(userSesion == null) {
                                                 <th>Nombre</th>
                                                 <th>Apellido paterno</th>
                                                 <th>Apellido materno</th>
-                                                <th>Cedula de identidad</th>
+                                                <th>Cedula de Identidad</th>
                                                 <th>Fecha de nacimiento</th>
-                                                <th>Telefono</th>
+                                                <th>Teléfono</th>
                                                 <th>Tipo de cargo</th>
                                                 <th>Acción</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach var="item" items="${empleado}">
+                                            <c:forEach var="item" items="${empleados}">
                                             <tr>
                                                 <td>${item.id}</td>
                                                 <td>${item.nombres}</td>
@@ -107,8 +107,7 @@ if(userSesion == null) {
                                                 <td>${item.ci}</td>
                                                 <td>${item.fecha_nac}</td>
                                                 <td>${item.telefono}</td>
-                                                <td>${item.tipo_nombre}</td>
-                                               
+                                                <td>${item.cargo}</td>
                                                 <td>
                                                     <a class="btn btn-success btn-sm" href="EmpleadoControlador?accion=editar&id=${item.id}" title="Editar"><span class="fa fa-edit"></span></a>
                                                     <a class="btn btn-danger btn-sm" href="EmpleadoControlador?accion=eliminar&id=${item.id}" title="Eliminar"><span class="fa fa-trash"></span></a>

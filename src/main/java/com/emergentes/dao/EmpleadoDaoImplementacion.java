@@ -61,14 +61,13 @@ public class EmpleadoDaoImplementacion extends ConexionBaseDatos implements Empl
     @Override
     public Empleado getById(int id) throws Exception {
         Empleado empleado = new Empleado();
-        String sql = "SELECT * FROM vehiculos WHERE id=?";
+        String sql = "SELECT * FROM empleados WHERE id=?";
         this.conectar();
         PreparedStatement ps = this.conn.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {            
             empleado.setId(rs.getInt("id"));
-            
             empleado.setNombres(rs.getString("nombres"));
             empleado.setPaterno(rs.getString("paterno"));
             empleado.setMaterno(rs.getString("materno"));
@@ -85,7 +84,8 @@ public class EmpleadoDaoImplementacion extends ConexionBaseDatos implements Empl
     @Override
     public List<Empleado> getAll() throws Exception {
         List<Empleado> lista = null;
-        String sql = "SELECT t1.*, t2.nombre FROM empleados t1 INNER JOIN catalogo_cargos t2 ON t2.id=t1.cargo_id";
+        //String sql = "SELECT t1.id, t1.nombres, t1.paterno, t1.materno, t1.ci, DATE_FORMAT(t1.fecha_nac, '%d/%m/%Y') AS fecha_nac, t1.telefono, t2.nombre AS cargo FROM empleados t1 INNER JOIN catalogo_cargos t2 ON t2.id=t1.cargo_id";
+        String sql = "SELECT t1.*, t2.nombre AS cargo FROM empleados t1 INNER JOIN catalogo_cargos t2 ON t2.id=t1.cargo_id";
         this.conectar();
         PreparedStatement ps = this.conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
@@ -100,8 +100,7 @@ public class EmpleadoDaoImplementacion extends ConexionBaseDatos implements Empl
             empleado.setFecha_nac(rs.getString("fecha_nac"));
             empleado.setCargo_id(rs.getInt("cargo_id"));
             empleado.setTelefono(rs.getString("telefono"));
-            
-            
+            empleado.setCargo(rs.getString("cargo"));
             lista.add(empleado);
         }
         this.desconectar();

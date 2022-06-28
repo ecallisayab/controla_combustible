@@ -11,6 +11,7 @@ public class Empleado {
     private String fecha_nac;
     private int cargo_id;
     private String telefono;
+    private String cargo;
     
      public Empleado() {
         id = 0;
@@ -21,7 +22,7 @@ public class Empleado {
         fecha_nac = "";
         cargo_id = 0;
         telefono = "";
-        
+        cargo = "";
     }
 
     public int getId() {
@@ -88,5 +89,11 @@ public class Empleado {
         this.telefono = telefono;
     }
      
-  
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 }

@@ -35,17 +35,13 @@ public class EmpleadoControlador extends HttpServlet {
             CargoDao daotipo= new CargoDaoImplementacion();
             switch (action) {
                 case "nuevo":
-                    
                     request.setAttribute("tipo_cargo", daotipo.getAll());
-                    
                     request.setAttribute("empleado", empleado);
                     request.getRequestDispatcher("empleado_form.jsp").forward(request, response);
                     break;
                  
                 case "editar":
-                    
                     request.setAttribute("tipo_cargo", daotipo.getAll());
-                    
                     id = Integer.parseInt(request.getParameter("id"));
                     empleado = dao.getById(id);
                     request.setAttribute("empleado", empleado);
@@ -68,7 +64,6 @@ public class EmpleadoControlador extends HttpServlet {
 
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -90,8 +85,9 @@ public class EmpleadoControlador extends HttpServlet {
         empleado.setCargo_id(cargo_id);
         empleado.setNombres(nombres);
         empleado.setPaterno(paterno);
+        empleado.setMaterno(materno);
         empleado.setCi(ci);
-         empleado.setFecha_nac(fecha_nac);
+        empleado.setFecha_nac(fecha_nac);
         empleado.setTelefono(telefono);
         EmpleadoDao dao = new EmpleadoDaoImplementacion();
         if (id == 0) {
