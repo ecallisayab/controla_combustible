@@ -15,7 +15,7 @@ if(userSesion == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de Combustible | Empleados</title>
+    <title>Control de Combustible | Entradas detalle</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@ if(userSesion == null) {
         <!-- Sidebar -->
         <!-- Revisar -->
         <jsp:include page="META-INF/componentes/menu.jsp">
-            <jsp:param name="opcion" value="empleado"/>
+            <jsp:param name="opcion" value="entrada"/>
         </jsp:include>
         <!-- End of Sidebar -->
 
@@ -71,68 +71,53 @@ if(userSesion == null) {
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h5 class="m-0 font-weight-bold">Empleados</h5>
-                                    <a class="btn btn-default text-right" href="EmpleadoControlador">
+                                    <h5 class="m-0 font-weight-bold">Detalle</h5>
+                                    <a class="btn btn-default text-right" href="EntradaControlador">
                                         <span class="fa fa-arrow-left"></span>&nbsp;Volver
                                     </a>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <form action="EmpleadoControlador" method="POST" autocomplete="off">
-                                        
-                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${empleado.id}">
+                                    <form action="EntradaDetalleControlador" method="POST" autocomplete="off">
+                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${entrada_detalle.id}">
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtNombre">Nombre</label>
-                                                    <input class="form-control" type="text" name="nombres" id="txtNombre" value="${empleado.nombres}" required>
+                                                    <label id="txtEntradaId">N° de Entrada</label>
+                                                     <input class="form-control" type="text" name="entrada_id" id="txtEntradaId" value="${entrada_detalle.entrada_id}" min="0" readonly required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtPaterno">Apellido paterno</label>
-                                                    <input class="form-control" type="text" name="paterno" id="txtPaterno" value="${empleado.paterno}" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label id="txtMaterno">Apellido materno</label>
-                                                    <input class="form-control" type="text" name="materno" id="txtMaterno" value="${empleado.materno}" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                             <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label id="txtCi">CI</label>
-                                                    <input class="form-control" type="number" name="ci" id="txtCi" value="${empleado.ci}" required>
-                                                </div>
-                                            </div>   
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label id="txtFechaNac">Fecha de nacimiento</label>
-                                                    <input class="form-control" type="date" name="fecha_nac" id="txtFechaNac" value="${empleado.fecha_nac}" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label id="txtTelefono">Teléfono</label>
-                                                    <input class="form-control" type="number" name="telefono" id="txtTelefono" value="${empleado.telefono}" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row"> 
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="cboTipoCargoId" class="form-label">Tipo de Cargo</label>
-                                                    <select class="form-control" name="cargo_id" id="cboTipoCargoId">
+                                                    <label id="cboItemId">Ítem</label>
+                                                    <select class="form-control" name="item_id" id="cboItemId">
                                                         <option value="">--Seleccione una opción--</option>
-                                                        <c:forEach var="item" items="${tipo_cargo}">
-                                                        <option value="${item.id}" <c:if test="${item.id == empleado.cargo_id}">selected</c:if>>${item.nombre}</option>
+                                                        <c:forEach var="item" items="${items}">
+                                                        <option value="${item.id}" <c:if test="${item.id == entrada_detalle.item_id}">selected</c:if>>${item.nombre}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
-                                             </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="txtCantidad">Cantidad (litros)</label>
+                                                     <input class="form-control" type="number" name="cantidad" id="txtCantidad" value="${entrada_detalle.cantidad}" min="0" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="txtPrecioUnit">Precio unitario (Bs.)</label>
+                                                     <input class="form-control" type="number" name="precio_unit" id="txtPrecioUnit" value="${entrada_detalle.precio_unit}" min="0" step="0.01" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="txtNroFactura">N° de factura</label>
+                                                     <input class="form-control" type="number" name="nro_factura" id="txtNroFactura" value="${entrada_detalle.nro_factura}" min="0" required>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12">

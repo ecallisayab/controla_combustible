@@ -15,7 +15,7 @@ if(userSesion == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Control de Combustible | Empleados</title>
+    <title>Control de Combustible | Salidas</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@ if(userSesion == null) {
         <!-- Sidebar -->
         <!-- Revisar -->
         <jsp:include page="META-INF/componentes/menu.jsp">
-            <jsp:param name="opcion" value="empleado"/>
+            <jsp:param name="opcion" value="salida"/>
         </jsp:include>
         <!-- End of Sidebar -->
 
@@ -71,68 +71,74 @@ if(userSesion == null) {
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h5 class="m-0 font-weight-bold">Empleados</h5>
-                                    <a class="btn btn-default text-right" href="EmpleadoControlador">
+                                    <h5 class="m-0 font-weight-bold">Salidas</h5>
+                                    <a class="btn btn-default text-right" href="SalidaControlador">
                                         <span class="fa fa-arrow-left"></span>&nbsp;Volver
                                     </a>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <form action="EmpleadoControlador" method="POST" autocomplete="off">
-                                        
-                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${empleado.id}">
+                                    <form action="SalidaControlador" method="POST" autocomplete="off">
+                                        <input class="form-control" type="hidden" name="id" id="txtId" value="${salida.id}">
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtNombre">Nombre</label>
-                                                    <input class="form-control" type="text" name="nombres" id="txtNombre" value="${empleado.nombres}" required>
+                                                    <label id="txtFecha">Fecha</label>
+                                                    <input class="form-control" type="date" name="fecha" id="txtFecha" value="${salida.fecha}" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtPaterno">Apellido paterno</label>
-                                                    <input class="form-control" type="text" name="paterno" id="txtPaterno" value="${empleado.paterno}" required>
+                                                    <label id="cboAlmacenId">Almacén</label>
+                                                    <select class="form-control" name="almacen_id" id="cboAlmacenId">
+                                                        <option value="">--Seleccione una opción--</option>
+                                                        <c:forEach var="item" items="${almacenes}">
+                                                        <option value="${item.id}" <c:if test="${item.id == salida.almacen_id}">selected</c:if>>${item.nombre}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtMaterno">Apellido materno</label>
-                                                    <input class="form-control" type="text" name="materno" id="txtMaterno" value="${empleado.materno}" required>
+                                                    <label id="cboEmpleadoId">Empleado</label>
+                                                     <select class="form-control" name="empleado_id" id="cboEmpleadoId">
+                                                        <option value="">--Seleccione una opción--</option>
+                                                        <c:forEach var="item" items="${empleados}">
+                                                        <option value="${item.id}" <c:if test="${item.id == salida.empleado_id}">selected</c:if>>${item.nombres}&nbsp;${item.paterno}&nbsp;${item.materno}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                             <div class="col-lg-4">
+                                            <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtCi">CI</label>
-                                                    <input class="form-control" type="number" name="ci" id="txtCi" value="${empleado.ci}" required>
+                                                    <label id="cboResponsableId">Responsable</label>
+                                                     <select class="form-control" name="responsable_id" id="cboResponsableId">
+                                                        <option value="">--Seleccione una opción--</option>
+                                                        <c:forEach var="item" items="${empleados}">
+                                                        <option value="${item.id}" <c:if test="${item.id == salida.responsable_id}">selected</c:if>>${item.nombres}&nbsp;${item.paterno}&nbsp;${item.materno}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label id="cboVehiculoId">Vehículo</label>
+                                                    <select class="form-control" name="vehiculo_id" id="cboVehiculoId">
+                                                        <option value="">--Seleccione una opción--</option>
+                                                        <c:forEach var="item" items="${vehiculos}">
+                                                        <option value="${item.id}" <c:if test="${item.id == salida.vehiculo_id}">selected</c:if>>${item.marca}&nbsp;${item.modelo}&nbsp;${item.placa}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>   
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <label id="txtFechaNac">Fecha de nacimiento</label>
-                                                    <input class="form-control" type="date" name="fecha_nac" id="txtFechaNac" value="${empleado.fecha_nac}" required>
+                                                    <label for="txtObs" class="form-label">Observación</label>
+                                                    <textarea class="form-control" name="obs" id="txtObs" rows="3">${salida.obs}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label id="txtTelefono">Teléfono</label>
-                                                    <input class="form-control" type="number" name="telefono" id="txtTelefono" value="${empleado.telefono}" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row"> 
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="cboTipoCargoId" class="form-label">Tipo de Cargo</label>
-                                                    <select class="form-control" name="cargo_id" id="cboTipoCargoId">
-                                                        <option value="">--Seleccione una opción--</option>
-                                                        <c:forEach var="item" items="${tipo_cargo}">
-                                                        <option value="${item.id}" <c:if test="${item.id == empleado.cargo_id}">selected</c:if>>${item.nombre}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12">

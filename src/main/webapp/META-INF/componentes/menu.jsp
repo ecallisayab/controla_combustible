@@ -37,7 +37,7 @@
                         <a class="collapse-item" href="EmpleadoControlador">Empleados</a>
                         <a class="collapse-item" href="ItemControlador">Ítems</a>
                         <a class="collapse-item" href="EntradaControlador">Entradas</a>
-                        <a class="collapse-item" href="SalidadaControlador">Salidas</a>
+                        <a class="collapse-item" href="SalidaControlador">Salidas</a>
                     </div>
                 </div>
             </li>

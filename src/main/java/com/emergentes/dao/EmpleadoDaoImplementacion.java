@@ -84,8 +84,8 @@ public class EmpleadoDaoImplementacion extends ConexionBaseDatos implements Empl
     @Override
     public List<Empleado> getAll() throws Exception {
         List<Empleado> lista = null;
-        //String sql = "SELECT t1.id, t1.nombres, t1.paterno, t1.materno, t1.ci, DATE_FORMAT(t1.fecha_nac, '%d/%m/%Y') AS fecha_nac, t1.telefono, t2.nombre AS cargo FROM empleados t1 INNER JOIN catalogo_cargos t2 ON t2.id=t1.cargo_id";
-        String sql = "SELECT t1.*, t2.nombre AS cargo FROM empleados t1 INNER JOIN catalogo_cargos t2 ON t2.id=t1.cargo_id";
+        String sql = "SELECT t1.id, t1.nombres, t1.paterno, t1.materno, t1.ci, DATE_FORMAT(t1.fecha_nac, '%d/%m/%Y') AS fecha_nac, t1.telefono, t1.cargo_id, t2.nombre AS cargo FROM empleados t1 INNER JOIN catalogo_cargos t2 ON t2.id=t1.cargo_id";
+        //String sql = "SELECT t1.*, t2.nombre AS cargo FROM empleados t1 INNER JOIN catalogo_cargos t2 ON t2.id=t1.cargo_id";
         this.conectar();
         PreparedStatement ps = this.conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
