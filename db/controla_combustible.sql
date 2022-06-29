@@ -11,7 +11,7 @@
  Target Server Version : 100140
  File Encoding         : 65001
 
- Date: 05/06/2022 14:45:10
+ Date: 28/06/2022 21:14:27
 */
 CREATE DATABASE IF NOT EXISTS controla_combustible;
 
@@ -37,6 +37,12 @@ CREATE TABLE `almacenes`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Records of almacenes
+-- ----------------------------
+INSERT INTO `almacenes` VALUES (1, 'OFICINA CENTRAL', 'AV. LAS LOMAS ZONA JULIANA', 1, 1, 2, '2022-06-06 21:26:40', '2022-06-06 21:26:40');
+INSERT INTO `almacenes` VALUES (2, 'ALMACEN A', 'OFICINA CENTRAL', 1, 1, 1, '2022-06-28 19:13:39', '2022-06-28 19:13:39');
+
+-- ----------------------------
 -- Table structure for catalogo_cargos
 -- ----------------------------
 DROP TABLE IF EXISTS `catalogo_cargos`;
@@ -52,6 +58,13 @@ CREATE TABLE `catalogo_cargos`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Records of catalogo_cargos
+-- ----------------------------
+INSERT INTO `catalogo_cargos` VALUES (1, 'RESPONSABLE ALMACEN', 1, 1, 1, '2022-06-05 17:53:31', '2022-06-05 17:53:31');
+INSERT INTO `catalogo_cargos` VALUES (2, 'CHOFER', 1, 1, 1, '2022-06-05 17:53:01', '2022-06-05 17:53:01');
+INSERT INTO `catalogo_cargos` VALUES (3, 'TECNICO', 1, 1, 1, '2022-06-28 19:46:33', '2022-06-28 19:46:33');
+
+-- ----------------------------
 -- Table structure for catalogo_tipos_vehiculo
 -- ----------------------------
 DROP TABLE IF EXISTS `catalogo_tipos_vehiculo`;
@@ -65,6 +78,13 @@ CREATE TABLE `catalogo_tipos_vehiculo`  (
   `fecha_actualizacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de actualización',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of catalogo_tipos_vehiculo
+-- ----------------------------
+INSERT INTO `catalogo_tipos_vehiculo` VALUES (1, 'VAGONETA', 1, 1, 1, '2022-06-06 21:49:00', '2022-06-06 21:49:00');
+INSERT INTO `catalogo_tipos_vehiculo` VALUES (2, 'MAQUINARIA PESADA', 1, 1, 1, '2022-06-06 21:49:14', '2022-06-06 21:49:14');
+INSERT INTO `catalogo_tipos_vehiculo` VALUES (3, 'CAMION', 1, 1, 1, '2022-06-28 19:45:57', '2022-06-28 19:45:57');
 
 -- ----------------------------
 -- Table structure for empleados
@@ -89,6 +109,12 @@ CREATE TABLE `empleados`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Records of empleados
+-- ----------------------------
+INSERT INTO `empleados` VALUES (1, 'MIGUEL', 'MAMANI', 'YANARICO', '12345', '2000-02-11', 1, '77722333', 1, 1, '2022-06-28 00:02:40', '2022-06-28 00:02:40');
+INSERT INTO `empleados` VALUES (2, 'EDWIN', 'CALLISAYA', 'BAUTISTA', '4332657', '2005-01-28', 2, '73044677', 1, 1, '2022-06-28 19:17:24', '2022-06-28 19:17:24');
+
+-- ----------------------------
 -- Table structure for entradas
 -- ----------------------------
 DROP TABLE IF EXISTS `entradas`;
@@ -105,13 +131,18 @@ CREATE TABLE `entradas`  (
   `fecha_creacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de creación',
   `fecha_actualizacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de actualización',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `entrada_almacenid_fk`(`almacen_id`) USING BTREE,
   INDEX `entrada_empleadoid_fk`(`responsable_id`) USING BTREE,
   INDEX `entrada_proveedorid_fk`(`proveedor_id`) USING BTREE,
+  INDEX `entrada_almacenid_fk`(`almacen_id`) USING BTREE,
   CONSTRAINT `entrada_almacenid_fk` FOREIGN KEY (`almacen_id`) REFERENCES `almacenes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `entrada_empleadoid_fk` FOREIGN KEY (`responsable_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `entrada_proveedorid_fk` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of entradas
+-- ----------------------------
+
 
 -- ----------------------------
 -- Table structure for entradas_detalle
@@ -136,6 +167,10 @@ CREATE TABLE `entradas_detalle`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Records of entradas_detalle
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for items
 -- ----------------------------
 DROP TABLE IF EXISTS `items`;
@@ -152,6 +187,13 @@ CREATE TABLE `items`  (
   `fecha_actualizacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de actualización',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of items
+-- ----------------------------
+INSERT INTO `items` VALUES (1, 'GASOLINA', 'LITRO', 0, 100, 1, 1, 1, '2022-06-06 20:18:36', '2022-06-06 20:18:36');
+INSERT INTO `items` VALUES (2, 'DIESEL', 'LITRO', 0, 50, 1, 1, 1, '2022-06-06 20:17:14', '2022-06-06 20:17:14');
+INSERT INTO `items` VALUES (3, 'GASOLINA ESPECIAL', 'LITRO', 50, 0, 1, 1, 1, '2022-06-28 19:39:45', '2022-06-28 19:39:45');
 
 -- ----------------------------
 -- Table structure for proveedores
@@ -175,6 +217,12 @@ CREATE TABLE `proveedores`  (
   `fecha_actualizacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de actualización',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of proveedores
+-- ----------------------------
+INSERT INTO `proveedores` VALUES (1, 'EMPRESA OLEOCOM', '1234567', '', 'CALLE PEREZ ZONA RIO SECO', 'OLEOCOM@GMAILCOM', 1234567890, '', '', '', '', 1, 1, '2022-06-06 12:26:13', '2022-06-06 12:26:13');
+INSERT INTO `proveedores` VALUES (2, 'EMPRESA GENEX', '72033455', '', 'CALLE 1 ZONA 16 DE JULIO', 'GENEX@GMAIL.COM', 0, 'LUIS LIMA', '73022344', 'CALLE 5 ZONA 16 DE JULIO', '', 1, 1, '2022-06-28 19:16:22', '2022-06-28 19:16:22');
 
 -- ----------------------------
 -- Table structure for salidas
@@ -205,6 +253,10 @@ CREATE TABLE `salidas`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Records of salidas
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for salidas_detalle
 -- ----------------------------
 DROP TABLE IF EXISTS `salidas_detalle`;
@@ -223,6 +275,33 @@ CREATE TABLE `salidas_detalle`  (
   CONSTRAINT `salidadet_itemid_fk` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `salidadet_salidaid_fk` FOREIGN KEY (`salida_id`) REFERENCES `salidas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of salidas_detalle
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for usuarios
+-- ----------------------------
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios`  (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'PK, Identificador correlativo',
+  `nombres_apellidos` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Nombres y Apellidos',
+  `usuario` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Usuario',
+  `contrasena` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Contraseña',
+  `rol` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Rol de usuario',
+  `estado` tinyint(4) NULL DEFAULT NULL COMMENT 'Estado de ítem',
+  `creado_por` smallint(6) NULL DEFAULT NULL COMMENT 'Creado por usuario',
+  `actualizado_por` smallint(6) NULL DEFAULT NULL COMMENT 'Actualizado por usuario',
+  `fecha_creacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de creación',
+  `fecha_actualizacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de actualización',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of usuarios
+-- ----------------------------
+INSERT INTO `usuarios` VALUES (1, 'Administrador', 'admin', '0192023a7bbd73250516f069df18b500', 'ADMIN', 1, 1, 1, '2022-06-06 10:11:52', '2022-06-06 10:11:52');
 
 -- ----------------------------
 -- Table structure for vehiculos
@@ -246,26 +325,9 @@ CREATE TABLE `vehiculos`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Table structure for usuarios
+-- Records of vehiculos
 -- ----------------------------
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE `usuarios`  (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'PK, Identificador correlativo',
-  `nombres_apellidos` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Nombres y Apellidos',
-  `usuario` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Usuario',
-  `contrasena` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Contraseña',
-  `rol` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Rol de usuario',
-  `estado` tinyint(4) NULL DEFAULT NULL COMMENT 'Estado de ítem',
-  `creado_por` smallint(6) NULL DEFAULT NULL COMMENT 'Creado por usuario',
-  `actualizado_por` smallint(6) NULL DEFAULT NULL COMMENT 'Actualizado por usuario',
-  `fecha_creacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de creación',
-  `fecha_actualizacion` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT 'Fecha y hora de actualización',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of usuarios
--- ----------------------------
-INSERT INTO `usuarios` VALUES (1, 'ADMINISTRADOR', 'ADMIN', '3f7caa3d471688b704b73e9a77b1107f', 'ADMIN', 1, 1, 1, '2022-06-05 23:48:02', '2022-06-05 23:48:02');
+INSERT INTO `vehiculos` VALUES (1, 1, 'TOYOTA', 'HILUX', '123-ABC', 'GASOLINA', 1, 1, 1, '2022-06-06 21:56:09', '2022-06-06 21:56:09');
+INSERT INTO `vehiculos` VALUES (2, 1, 'MAZDA', 'GENERICO', 'FDA-455', 'GASOLINA', 1, 1, 1, '2022-06-28 19:38:02', '2022-06-28 19:38:02');
 
 SET FOREIGN_KEY_CHECKS = 1;
