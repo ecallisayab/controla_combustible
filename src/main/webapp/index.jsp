@@ -73,7 +73,7 @@ if(userSesion == null) {
                             <p>
                                 <ul>
                                     <li>Callisaya Bautista Edwin (4332657LP)</li>
-                                    <li>Mamani Yanarico Miguel (69924414LP)</li>
+                                    <li>Mamani Yanarico Miguel (13449218LP)</li>
                                 </ul>
                             </p>
                             <!-- END::CONTENIDO -->
